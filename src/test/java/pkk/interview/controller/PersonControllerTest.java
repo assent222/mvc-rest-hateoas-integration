@@ -32,8 +32,8 @@ public class PersonControllerTest {
     private static final String BASE_URI = "http://localhost:8080";
 
     @Test
-    public void testPersonController() throws Exception {
-        System.out.println(">> testPersonController");
+    public void testPersonController_persons() throws Exception {
+        System.out.println(">> testPersonController_persons");
 
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
         String response = mockMvc.perform(get(BASE_URI + "/rest/persons").accept(MediaType.APPLICATION_JSON))
@@ -45,6 +45,23 @@ public class PersonControllerTest {
 //        ObjectMapper mapper = new ObjectMapper();
 //        Map map = mapper.readValue(response, Map.class);
 
-        System.out.println("<< testPersonController");
+        System.out.println("<< testPersonController_persons");
+    }
+
+    @Test
+    public void testPersonController_findPerson() throws Exception {
+        System.out.println(">> testPersonController_findPerson");
+
+        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
+        String response = mockMvc.perform(get(BASE_URI + "/rest/persons/1").accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andReturn().getResponse().getContentAsString();
+
+//        ObjectMapper mapper = new ObjectMapper();
+//        Map map = mapper.readValue(response, Map.class);
+
+        System.out.println("<< testPersonController_findPerson");
     }
 }

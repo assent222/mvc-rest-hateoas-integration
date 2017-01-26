@@ -76,6 +76,13 @@
             <version>${org.springframework}</version>
         </dependency>
 
+        <!--HATEOAS-->
+        <dependency>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
+            <version>0.23.0.RELEASE</version>
+        </dependency>
+
         <!--JSON REST-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
